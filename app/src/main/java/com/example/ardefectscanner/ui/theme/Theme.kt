@@ -1,57 +1,63 @@
 package com.example.ardefectscanner.ui.theme
 
-import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+private val LightColors = lightColorScheme(
+    primary = Color(0xFF245C46),
+    onPrimary = Color.White,
+    primaryContainer = Color(0xFFD9F4A7),
+    onPrimaryContainer = Color(0xFF193325),
+    secondary = Color(0xFF56634D),
+    secondaryContainer = Color(0xFFE5ECD9),
+    onSecondaryContainer = Color(0xFF263721),
+    tertiary = Color(0xFF89622C),
+    tertiaryContainer = Color(0xFFFFE8BA),
+    background = Color(0xFFF7F8F2),
+    surface = Color(0xFFF7F8F2),
+    surfaceVariant = Color(0xFFE8ECE2),
+    onSurface = Color(0xFF1A211C),
+    onSurfaceVariant = Color(0xFF526052),
+    outline = Color(0xFF778375),
+    surfaceContainerLowest = Color.White,
+    surfaceContainerLow = Color(0xFFF1F4EB),
+    surfaceContainer = Color(0xFFEBEFE4),
+    surfaceContainerHigh = Color(0xFFE5EADD),
+    surfaceContainerHighest = Color(0xFFDFE5D6)
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val DarkColors = darkColorScheme(
+    primary = Color(0xFFBADD95),
+    onPrimary = Color(0xFF193325),
+    primaryContainer = Color(0xFF304D37),
+    onPrimaryContainer = Color(0xFFD9F4A7),
+    secondaryContainer = Color(0xFF354333),
+    onSecondaryContainer = Color(0xFFE5ECD9),
+    tertiary = Color(0xFFFFD699),
+    tertiaryContainer = Color(0xFF59431F),
+    background = Color(0xFF121914),
+    surface = Color(0xFF121914),
+    surfaceVariant = Color(0xFF263128),
+    onSurface = Color(0xFFE4EBDD),
+    onSurfaceVariant = Color(0xFFBAC8B5),
+    surfaceContainerLowest = Color(0xFF0C130E),
+    surfaceContainerLow = Color(0xFF18211A),
+    surfaceContainer = Color(0xFF1D2820),
+    surfaceContainerHigh = Color(0xFF27332A),
+    surfaceContainerHighest = Color(0xFF313E33)
 )
 
 @Composable
 fun ARDefectScannerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = if (darkTheme) DarkColors else LightColors,
         typography = Typography,
         content = content
     )

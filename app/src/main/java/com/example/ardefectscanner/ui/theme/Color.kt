@@ -2,6 +2,9 @@ package com.example.ardefectscanner.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val Forest = Color(0xFF183F32)
+val Lime = Color(0xFFD9F4A7)
+
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)
